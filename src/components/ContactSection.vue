@@ -59,31 +59,25 @@
               <div class="space-y-3">
                 <!-- Real Estate -->
                 <div
-                  class="rounded-xl border-2 transition"
+                  class="overflow-hidden rounded-xl border-2 transition"
                   :class="form.realEstate ? 'border-[#968243]' : 'border-slate-200'"
                 >
                   <label
-                    class="flex cursor-pointer items-center gap-3 p-3"
+                    class="flex cursor-pointer items-stretch"
                     :class="form.realEstate ? 'bg-[#968243]/5' : ''"
                   >
-                    <input
-                      v-model="form.realEstate"
-                      type="checkbox"
-                      class="h-5 w-5 rounded accent-[#968243]"
-                    />
-                    <div class="flex-1">
-                      <div class="font-medium text-slate-800">Immobilier</div>
-                      <div class="text-xs text-slate-500">Propriétés de luxe</div>
+                    <div class="flex flex-1 items-center gap-3 p-3">
+                      <input
+                        v-model="form.realEstate"
+                        type="checkbox"
+                        class="h-5 w-5 rounded accent-[#968243]"
+                      />
+                      <div>
+                        <div class="font-medium text-slate-800">Immobilier</div>
+                        <div class="text-xs text-slate-500">Propriétés de luxe</div>
+                      </div>
                     </div>
-                    <svg
-                      class="h-5 w-5 text-slate-400 transition-transform"
-                      :class="form.realEstate ? 'rotate-180' : ''"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
+                    <img src="/assets/Real-estate.jpg" class="h-16 w-24 object-cover" alt="Immobilier" />
                   </label>
 
                   <!-- Real Estate Cities -->
@@ -111,31 +105,25 @@
 
                 <!-- Yachting -->
                 <div
-                  class="rounded-xl border-2 transition"
+                  class="overflow-hidden rounded-xl border-2 transition"
                   :class="form.yachting ? 'border-[#968243]' : 'border-slate-200'"
                 >
                   <label
-                    class="flex cursor-pointer items-center gap-3 p-3"
+                    class="flex cursor-pointer items-stretch"
                     :class="form.yachting ? 'bg-[#968243]/5' : ''"
                   >
-                    <input
-                      v-model="form.yachting"
-                      type="checkbox"
-                      class="h-5 w-5 rounded accent-[#968243]"
-                    />
-                    <div class="flex-1">
-                      <div class="font-medium text-slate-800">Yachting</div>
-                      <div class="text-xs text-slate-500">Charters & croisières</div>
+                    <div class="flex flex-1 items-center gap-3 p-3">
+                      <input
+                        v-model="form.yachting"
+                        type="checkbox"
+                        class="h-5 w-5 rounded accent-[#968243]"
+                      />
+                      <div>
+                        <div class="font-medium text-slate-800">Yachting</div>
+                        <div class="text-xs text-slate-500">Charters & croisières</div>
+                      </div>
                     </div>
-                    <svg
-                      class="h-5 w-5 text-slate-400 transition-transform"
-                      :class="form.yachting ? 'rotate-180' : ''"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
+                    <img src="/assets/Yachting.jpg" class="h-16 w-24 object-cover" alt="Yachting" />
                   </label>
 
                   <!-- Yachting Cities -->

@@ -171,7 +171,7 @@
                 :style="{ backgroundColor: colors.gold }"
                 :disabled="submitting"
               >
-                {{ submitting ? 'Envoi...' : 'Découvrir Maintenant' }}
+                {{ submitting ? 'Envoi...' : 'Envoyer la demande' }}
               </button>
 
               <a

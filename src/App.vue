@@ -29,6 +29,7 @@
 import { onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import Lenis from 'lenis'
 
 import HeroSection from './components/HeroSection.vue'
 import ForceSection from './components/ForceSection.vue'
@@ -38,19 +39,40 @@ import ContactSection from './components/ContactSection.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
+let lenis = null
+
 const colors = {
   blue: '#0C2340',
   gold: '#968243',
 }
 
 function scrollTo(id) {
-  const el = document.getElementById(id)
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  if (lenis) {
+    lenis.scrollTo(`#${id}`)
+  } else {
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 }
 
 onMounted(() => {
+  // Initialize Lenis
+  lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  })
+
+  // Sync ScrollTrigger with Lenis
+  lenis.on('scroll', ScrollTrigger.update)
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000)
+  })
+
+  gsap.ticker.lagSmoothing(0)
+
+  // Section animations
   gsap.utils.toArray('section').forEach((section) => {
     gsap.from(section, {
       opacity: 0,
@@ -66,6 +88,10 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  if (lenis) {
+    lenis.destroy()
+    lenis = null
+  }
   ScrollTrigger.getAll().forEach(t => t.kill())
 })
 </script>

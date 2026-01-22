@@ -1,7 +1,12 @@
 <template>
-  <section class="py-20 md:py-32">
+  <section class="py-12 md:py-20">
     <div class="mx-auto max-w-6xl px-6">
-      <div class="relative border-l border-white/10 pl-8 md:pl-16 mb-20">
+      <div class="relative pl-8 md:pl-16 mb-20">
+        <!-- Animated Side Border -->
+        <div class="absolute left-0 top-0 h-full w-[1px] bg-white/10 overflow-hidden">
+          <div class="absolute top-0 left-0 w-full bg-white/40 side-line-fill"></div>
+        </div>
+
         <h2 class="text-2xl md:text-4xl font-bold text-white leading-tight tracking-wider uppercase mb-10">
           Vous portez un intérêt
         </h2>
@@ -14,7 +19,11 @@
 
       <div class="grid gap-8 md:grid-cols-3">
         <div v-for="sector in sectors" :key="sector.name" class="relative group h-64 overflow-hidden shadow-xl cursor-pointer">
-          <img :src="sector.image" :alt="sector.name" class="h-full w-full object-cover transition-all duration-1000" />
+          <img 
+            :src="sector.image" 
+            :alt="sector.name" 
+            class="sector-image absolute inset-0 h-[120%] w-full object-cover transition-opacity duration-700" 
+          />
           <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="relative px-8 py-4">
@@ -40,9 +49,41 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
 const sectors = [
   { name: 'IMMOBILIER', image: '/assets/Real-estate.jpg' },
   { name: 'YACHTING', image: '/assets/Yachting.jpg' },
   { name: 'AVIATION', image: '/assets/flights-bg.png' },
 ]
+
+onMounted(() => {
+  gsap.utils.toArray('.sector-image').forEach((img) => {
+    gsap.to(img, {
+      y: '-20%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: img.parentElement,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      },
+    })
+  })
+})
 </script>
+
+<style scoped>
+.side-line-fill {
+  height: 30%;
+  animation: side-fill 4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes side-fill {
+  0% { transform: translateY(-100%); }
+  50% { transform: translateY(400%); }
+  100% { transform: translateY(400%); }
+}
+</style>

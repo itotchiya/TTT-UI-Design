@@ -1,7 +1,12 @@
 <template>
-  <section class="py-20 md:py-32 bg-[#0C2340]">
+  <section class="py-12 md:py-20 bg-[#0C2340]">
     <div class="mx-auto max-w-6xl px-6">
-      <div class="mb-20 border-l border-white/10 pl-8 md:pl-16">
+      <div class="mb-12 relative pl-8 md:pl-16">
+        <!-- Animated Side Border -->
+        <div class="absolute left-0 top-0 h-full w-[1px] bg-white/10 overflow-hidden">
+          <div class="absolute top-0 left-0 w-full bg-white/40 side-line-fill"></div>
+        </div>
+        
         <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 uppercase tracking-wider">Où nous opérons</h2>
         <p class="mt-6 text-lg text-white/70 font-light max-w-2xl">
           Grâce à son réseau, The Tender To est implanté dans des univers <span class="font-bold text-white">iconiques</span>, luxueux et hautement spécialisés.
@@ -10,7 +15,11 @@
 
       <div class="grid gap-8 md:grid-cols-2">
         <div v-for="city in cities" :key="city.name" class="relative group h-64 md:h-80 overflow-hidden">
-          <img :src="city.image" :alt="city.name" class="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+          <img 
+            :src="city.image" 
+            :alt="city.name" 
+            class="city-image absolute inset-0 h-[120%] w-full object-cover transition-opacity duration-700" 
+          />
           <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="relative px-12 py-6">
@@ -31,10 +40,42 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
 const cities = [
   { name: 'MEGEVE', image: '/assets/MEGEVE.jpg' },
   { name: 'MARRAKECH', image: '/assets/Marrakesh.jpg' },
   { name: 'ST TROPEZ', image: '/assets/ST-TROPEZ.webp' },
   { name: 'PARIS', image: '/assets/paris.jpg' },
 ]
+
+onMounted(() => {
+  gsap.utils.toArray('.city-image').forEach((img) => {
+    gsap.to(img, {
+      y: '-20%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: img.parentElement,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      },
+    })
+  })
+})
 </script>
+
+<style scoped>
+.side-line-fill {
+  height: 30%;
+  animation: side-fill 4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes side-fill {
+  0% { transform: translateY(-100%); }
+  50% { transform: translateY(400%); }
+  100% { transform: translateY(400%); }
+}
+</style>

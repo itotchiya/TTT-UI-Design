@@ -1,5 +1,5 @@
 <template>
-  <section id="contact" class="scroll-mt-20 py-16 md:py-32">
+  <section id="contact" class="scroll-mt-20 py-12 md:py-16">
     <div class="mx-auto max-w-6xl px-6">
       <div class="grid gap-16 md:items-start">
         <!-- Right: Form -->

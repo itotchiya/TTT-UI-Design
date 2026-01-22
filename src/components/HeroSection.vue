@@ -1,40 +1,37 @@
 <template>
-  <section id="presentation" class="relative overflow-hidden">
-    <!-- Background -->
-    <div class="absolute inset-0">
-      <img
-        src="/assets/Real-estate.jpg"
-        alt="Arrière-plan"
-        class="h-full w-full object-cover opacity-40"
-      />
-      <div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-white/0" />
+  <section id="presentation" class="relative min-h-[90vh] flex flex-col items-center justify-center pt-16 pb-24 overflow-hidden">
+    <!-- Background (Subtle) -->
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0C2340]/50 to-[#0C2340]" />
     </div>
 
-    <div class="relative mx-auto max-w-6xl px-4 py-20 md:py-28 lg:py-36">
-      <div class="max-w-3xl">
-        <!-- Logo -->
-        <img src="/assets/logo.png" alt="The Tender To" class="h-14 md:h-16" />
+    <div class="relative z-10 w-full max-w-6xl px-6 text-center">
+      <!-- Logo -->
+      <div class="mb-16 flex justify-center">
+        <img src="/assets/logo vertical.svg" alt="The Tender To" class="h-48 brightness-0 invert" />
+      </div>
 
-        <!-- Title -->
-        <h1 class="mt-8 text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl">
-          Votre Portail vers
-          <span class="block" :style="{ color: colors.blue }">un Art de Vivre d'Exception</span>
+      <!-- Welcome Box -->
+      <div class="relative mx-auto w-full border border-white/10 p-10 md:p-16">
+        <!-- Corner Accent: Bottom Left -->
+        <div class="absolute -bottom-2 -left-2 h-12 w-12 border-b-2 border-l-2 border-white/40" />
+        <!-- Corner Accent: Top Right -->
+        <div class="absolute -top-2 -right-2 h-12 w-12 border-t-2 border-r-2 border-white/40" />
+
+        <h1 class="text-3xl md:text-5xl font-light text-white leading-tight mb-12 uppercase tracking-widest">
+          Bienvenue à bord,
         </h1>
+        
+        <div class="space-y-8 text-left mx-auto">
+          <p class="text-lg md:text-xl text-white/90 font-light leading-relaxed">
+            The Tender To est une plateforme innovante réunissant trois secteurs phares :<br />
+            l’Immobilier, le Yachting et l’Aviation privée.
+          </p>
 
-        <!-- Description -->
-        <p class="mt-6 max-w-2xl text-base leading-relaxed text-slate-600 md:text-lg">
-          Découvrez des propriétés d'exception dans les destinations les plus prisées au monde et explorez des charters de yachts exclusifs en Méditerranée. Notre équipe de conciergerie vous assure une expérience personnalisée et sans faille.
-        </p>
-
-        <!-- Single Action -->
-        <div class="mt-10">
-          <button
-            class="rounded-full px-8 py-4 text-base font-semibold shadow-lg transition hover:scale-105"
-            :style="{ backgroundColor: colors.gold, color: 'white' }"
-            @click="$emit('scrollTo', 'contact')"
-          >
-            Découvrir le Site
-          </button>
+          <p class="text-base md:text-lg text-white/80 font-light leading-relaxed">
+            Nous avons conçu un écosystème d’apporteurs d’affaires et de partenaires professionnels afin de connecter clients, biens et opportunités d’exception.<br />
+            The Tender To privilégie le réseau, la mise en relation qualifiée et une approche discrète, propre aux univers du luxe.
+          </p>
         </div>
       </div>
     </div>
@@ -42,10 +39,4 @@
 </template>
 
 <script setup>
-defineEmits(['scrollTo'])
-
-const colors = {
-  blue: '#0C2340',
-  gold: '#968243',
-}
 </script>

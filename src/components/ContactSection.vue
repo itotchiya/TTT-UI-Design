@@ -1,25 +1,22 @@
 <template>
-  <section id="contact" class="scroll-mt-20 py-16 md:py-24" :style="{ backgroundColor: colors.blue }">
-    <div class="mx-auto max-w-6xl px-4">
-      <div class="grid gap-10 md:grid-cols-2 md:items-start">
-        <!-- Left: Text -->
-        <div class="text-white md:sticky md:top-24">
-          <h2 class="text-3xl font-bold tracking-tight md:text-4xl">Découvrir le Site</h2>
-          <p class="mt-4 text-lg text-white/80">
-            Remplissez le formulaire et sélectionnez vos centres d'intérêt pour accéder à notre catalogue premium. Notre équipe de conciergerie vous contactera avec des recommandations personnalisées.
-          </p>
-        </div>
-
+  <section id="contact" class="scroll-mt-20 py-16 md:py-32">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="grid gap-16 md:items-start">
         <!-- Right: Form -->
-        <div class="rounded-3xl bg-white p-6 shadow-2xl md:p-8">
-          <form class="space-y-4" @submit.prevent="handleSubmit">
+        <div class="bg-white p-8 shadow-2xl md:p-12 mx-auto w-full max-w-3xl">
+          <div class="text-center mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#0C2340] uppercase">Demande de Renseignement</h2>
+            <div class="mt-6 w-12 h-1 bg-[#968243] mx-auto opacity-30"></div>
+          </div>
+
+          <form class="space-y-6" @submit.prevent="handleSubmit">
             <!-- Contact Info -->
             <div class="grid gap-4 sm:grid-cols-2">
               <div>
                 <label class="mb-1.5 block text-sm font-medium text-slate-700">Prénom</label>
                 <input
                   v-model.trim="form.firstName"
-                  class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-100"
+                  class="w-full border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-100"
                   placeholder="Jean"
                 />
               </div>
@@ -27,7 +24,7 @@
                 <label class="mb-1.5 block text-sm font-medium text-slate-700">Nom</label>
                 <input
                   v-model.trim="form.lastName"
-                  class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-100"
+                  class="w-full border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-100"
                   placeholder="Dupont"
                 />
               </div>
@@ -38,7 +35,7 @@
               <input
                 v-model.trim="form.email"
                 type="email"
-                class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-100"
+                class="w-full border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-100"
                 placeholder="jean@exemple.com"
               />
             </div>
@@ -48,106 +45,41 @@
               <input
                 v-model.trim="form.phone"
                 type="tel"
-                class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-100"
+                class="w-full border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-100"
                 placeholder="+33 ..."
               />
             </div>
 
-            <!-- Interest Selection (Below inputs) -->
+            <!-- Interest Selection (Condensed) -->
             <div class="pt-2">
-              <label class="mb-3 block text-sm font-medium text-slate-700">Vos centres d'intérêt</label>
-              <div class="space-y-3">
+              <label class="mb-4 block text-sm font-semibold uppercase tracking-wider text-slate-400">Centres d'intérêt</label>
+              <div class="grid gap-4 sm:grid-cols-3">
                 <!-- Real Estate -->
-                <div
-                  class="overflow-hidden rounded-xl border-2 transition"
-                  :class="form.realEstate ? 'border-[#968243]' : 'border-slate-200'"
+                <label 
+                  class="flex items-center gap-3 p-4 border-2 transition cursor-pointer"
+                  :class="form.realEstate ? 'border-[#968243] bg-[#968243]/5' : 'border-slate-100'"
                 >
-                  <label
-                    class="flex cursor-pointer items-stretch"
-                    :class="form.realEstate ? 'bg-[#968243]/5' : ''"
-                  >
-                    <div class="flex flex-1 items-center gap-3 p-3">
-                      <input
-                        v-model="form.realEstate"
-                        type="checkbox"
-                        class="h-5 w-5 rounded accent-[#968243]"
-                      />
-                      <div>
-                        <div class="font-medium text-slate-800">Immobilier</div>
-                        <div class="text-xs text-slate-500">Propriétés de luxe</div>
-                      </div>
-                    </div>
-                    <img src="/assets/Real-estate.jpg" class="h-16 w-24 object-cover" alt="Immobilier" />
-                  </label>
-
-                  <!-- Real Estate Cities -->
-                  <div v-if="form.realEstate" class="border-t border-slate-100 p-3">
-                    <div class="mb-2 text-xs font-medium text-slate-500">Sélectionnez vos destinations</div>
-                    <div class="grid gap-2 sm:grid-cols-2">
-                      <label
-                        v-for="city in realEstateCities"
-                        :key="city.name"
-                        class="flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 transition"
-                        :class="form.selectedRealEstateCities.includes(city.name) ? 'border-[#968243] bg-[#968243]/5' : 'border-slate-100 hover:border-slate-200'"
-                      >
-                        <input
-                          v-model="form.selectedRealEstateCities"
-                          type="checkbox"
-                          :value="city.name"
-                          class="h-4 w-4 rounded accent-[#968243]"
-                        />
-                        <img :src="city.flag" :alt="city.country" class="h-4 w-6 rounded object-cover" />
-                        <span class="text-sm text-slate-700">{{ city.name }}</span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
+                  <input v-model="form.realEstate" type="checkbox" class="h-5 w-5 rounded-none accent-[#968243]" />
+                  <span class="font-medium text-slate-800">Immobilier</span>
+                </label>
 
                 <!-- Yachting -->
-                <div
-                  class="overflow-hidden rounded-xl border-2 transition"
-                  :class="form.yachting ? 'border-[#968243]' : 'border-slate-200'"
+                <label 
+                  class="flex items-center gap-3 p-4 border-2 transition cursor-pointer"
+                  :class="form.yachting ? 'border-[#968243] bg-[#968243]/5' : 'border-slate-100'"
                 >
-                  <label
-                    class="flex cursor-pointer items-stretch"
-                    :class="form.yachting ? 'bg-[#968243]/5' : ''"
-                  >
-                    <div class="flex flex-1 items-center gap-3 p-3">
-                      <input
-                        v-model="form.yachting"
-                        type="checkbox"
-                        class="h-5 w-5 rounded accent-[#968243]"
-                      />
-                      <div>
-                        <div class="font-medium text-slate-800">Yachting</div>
-                        <div class="text-xs text-slate-500">Charters & croisières</div>
-                      </div>
-                    </div>
-                    <img src="/assets/Yachting.jpg" class="h-16 w-24 object-cover" alt="Yachting" />
-                  </label>
+                  <input v-model="form.yachting" type="checkbox" class="h-5 w-5 rounded-none accent-[#968243]" />
+                  <span class="font-medium text-slate-800">Yachting</span>
+                </label>
 
-                  <!-- Yachting Cities -->
-                  <div v-if="form.yachting" class="border-t border-slate-100 p-3">
-                    <div class="mb-2 text-xs font-medium text-slate-500">Sélectionnez vos destinations</div>
-                    <div class="grid gap-2 sm:grid-cols-2">
-                      <label
-                        v-for="city in yachtingCities"
-                        :key="city.name"
-                        class="flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 transition"
-                        :class="form.selectedYachtingCities.includes(city.name) ? 'border-[#968243] bg-[#968243]/5' : 'border-slate-100 hover:border-slate-200'"
-                      >
-                        <input
-                          v-model="form.selectedYachtingCities"
-                          type="checkbox"
-                          :value="city.name"
-                          class="h-4 w-4 rounded accent-[#968243]"
-                        />
-                        <img :src="city.flag" :alt="city.country" class="h-4 w-6 rounded object-cover" />
-                        <span class="text-sm text-slate-700">{{ city.name }}</span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
+                <!-- Aviation -->
+                <label 
+                  class="flex items-center gap-3 p-4 border-2 transition cursor-pointer"
+                  :class="form.aviation ? 'border-[#968243] bg-[#968243]/5' : 'border-slate-100'"
+                >
+                  <input v-model="form.aviation" type="checkbox" class="h-5 w-5 rounded-none accent-[#968243]" />
+                  <span class="font-medium text-slate-800">Aviation</span>
+                </label>
               </div>
             </div>
 
@@ -155,7 +87,7 @@
             <div class="space-y-3 pt-4">
               <button
                 type="submit"
-                class="w-full rounded-xl py-3.5 text-sm font-semibold text-white shadow-lg transition hover:opacity-90 disabled:opacity-50"
+                class="w-full py-3.5 text-sm font-semibold text-white shadow-lg transition hover:opacity-90 disabled:opacity-50"
                 :style="{ backgroundColor: colors.gold }"
                 :disabled="submitting"
               >
@@ -163,7 +95,7 @@
               </button>
 
               <a
-                class="block w-full rounded-xl border border-slate-200 bg-white py-3.5 text-center text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+                class="block w-full border border-slate-200 bg-white py-3.5 text-center text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
                 href="https://thetenderto.com/"
                 target="_blank"
               >
@@ -260,6 +192,7 @@ const yachtingCities = [
 const form = reactive({
   realEstate: false,
   yachting: false,
+  aviation: false,
   selectedRealEstateCities: [],
   selectedYachtingCities: [],
   firstName: '',
@@ -292,7 +225,7 @@ function closeModal() {
 async function handleSubmit() {
   error.value = ''
 
-  if (!form.realEstate && !form.yachting) {
+  if (!form.realEstate && !form.yachting && !form.aviation) {
     error.value = 'Veuillez sélectionner au moins un centre d\'intérêt.'
     return
   }

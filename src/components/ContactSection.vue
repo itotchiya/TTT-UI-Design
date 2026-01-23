@@ -5,7 +5,7 @@
         <!-- Right: Form -->
         <div class="bg-white p-8 shadow-2xl md:p-12 mx-auto w-full max-w-3xl">
           <div class="text-center mb-10">
-            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#0C2340] uppercase">Demande de Renseignement</h2>
+            <h2 class="text-2xl md:text-4xl font-bold tracking-tight text-[#0C2340] uppercase">Demande de Renseignement</h2>
             <div class="mt-6 w-12 h-1 bg-[#968243] mx-auto opacity-30"></div>
           </div>
 

@@ -7,7 +7,7 @@
           <div class="absolute top-0 left-0 w-full bg-white/40 side-line-fill"></div>
         </div>
         
-        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 uppercase tracking-wider">Où nous opérons</h2>
+        <h2 class="text-2xl md:text-4xl font-bold text-white leading-tight tracking-wider uppercase mb-10">Où nous opérons</h2>
         <p class="mt-6 text-lg text-white/70 font-light max-w-2xl">
           Grâce à son réseau, The Tender To est implanté dans des univers <span class="font-bold text-white">iconiques</span>, luxueux et hautement spécialisés.
         </p>

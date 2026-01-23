@@ -8,7 +8,7 @@
         </div>
 
         <div class="mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-white leading-tight">
+          <h2 class="text-2xl md:text-4xl font-bold text-white leading-tight tracking-wider uppercase">
             La Force <br />
             <span class="text-2xl md:text-3xl font-light opacity-80 uppercase tracking-wider">de The Tender To</span>
           </h2>

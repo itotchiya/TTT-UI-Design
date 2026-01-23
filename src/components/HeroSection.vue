@@ -5,20 +5,20 @@
       <div class="absolute inset-0 bg-gradient-to-b from-[#0C2340]/50 to-[#0C2340]" />
     </div>
 
-    <div class="relative z-10 w-full max-w-6xl px-6 text-center">
+    <div class="relative z-10 w-full max-w-6xl px-4 md:px-6 text-center">
       <!-- Logo -->
-      <div class="mb-12 flex justify-center">
+      <div class="mb-8 md:mb-12 flex justify-center">
         <img src="/assets/logo vertical.svg" alt="The Tender To" class="h-40 md:h-48 brightness-0 invert" />
       </div>
 
       <!-- Welcome Box -->
-      <div class="relative mx-auto w-full border border-white/10 p-10 md:p-16">
+      <div class="relative mx-auto w-full border border-white/10 p-6 md:p-16">
         <!-- Corner Accent: Bottom Left -->
         <div class="absolute -bottom-2 -left-2 h-12 w-12 border-b-2 border-l-2 border-white/40" />
         <!-- Corner Accent: Top Right -->
         <div class="absolute -top-2 -right-2 h-12 w-12 border-t-2 border-r-2 border-white/40" />
 
-        <h1 class="text-3xl md:text-5xl font-light text-white leading-tight mb-8 uppercase tracking-widest">
+        <h1 class="text-xl sm:text-2xl md:text-5xl font-light text-white leading-tight mb-8 uppercase tracking-widest whitespace-nowrap">
           Bienvenue à bord,
         </h1>
         

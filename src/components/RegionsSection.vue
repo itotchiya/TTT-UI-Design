@@ -14,7 +14,12 @@
       </div>
 
       <div class="grid gap-8 md:grid-cols-2">
-        <div v-for="city in cities" :key="city.name" class="relative group h-64 md:h-80 overflow-hidden">
+        <div 
+          v-for="(city, index) in cities" 
+          :key="city.name" 
+          class="relative group h-64 md:h-80 overflow-hidden"
+          :class="{ 'md:col-span-2': index === cities.length - 1 }"
+        >
           <img 
             :src="city.image" 
             :alt="city.name" 
@@ -28,7 +33,7 @@
               <!-- Corner Accent: Top Right -->
               <div class="absolute -top-1 -right-1 h-6 w-6 border-t-2 border-r-2 border-white/60" />
               
-              <span class="text-xl md:text-3xl font-light text-white tracking-[0.3em] uppercase">
+              <span class="text-3xl md:text-5xl font-serif font-light text-white tracking-[0.1em] uppercase">
                 {{ city.name }}
               </span>
             </div>
@@ -46,9 +51,10 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 
 const cities = [
   { name: 'MEGEVE', image: '/assets/MEGEVE.jpg' },
-  { name: 'MARRAKECH', image: '/assets/Marrakesh.jpg' },
   { name: 'ST TROPEZ', image: '/assets/ST-TROPEZ.webp' },
+  { name: 'DEAUVILLE', image: '/assets/deauville.jpg' },
   { name: 'PARIS', image: '/assets/paris.jpg' },
+  { name: 'MARRAKECH', image: '/assets/Marrakesh.jpg' },
 ]
 
 onMounted(() => {

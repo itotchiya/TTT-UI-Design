@@ -18,7 +18,12 @@
       </div>
 
       <div class="grid gap-8 md:grid-cols-3">
-        <div v-for="sector in sectors" :key="sector.name" class="relative group h-64 overflow-hidden shadow-xl cursor-pointer">
+        <div 
+          v-for="sector in sectors" 
+          :key="sector.name" 
+          class="relative group h-64 overflow-hidden shadow-xl cursor-pointer"
+          @click="$emit('select-interest', sector.name)"
+        >
           <img 
             :src="sector.image" 
             :alt="sector.name" 
@@ -50,6 +55,8 @@
 
 <script setup>
 import { onMounted } from 'vue'
+
+const emit = defineEmits(['select-interest'])
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 

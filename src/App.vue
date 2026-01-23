@@ -4,8 +4,9 @@
     <HeroSection @scroll-to="scrollTo" />
     <ForceSection />
     <RegionsSection />
-    <SectorsSection />
-    <ContactSection />
+    <SectorsSection @select-interest="setInterest" />
+    <ContactSection :selected-interest="currentInterest" />
+    <FloatingCTA /> 
 
     <!-- Footer -->
     <footer class="border-t border-white/10 py-12" :style="{ backgroundColor: colors.blue }">
@@ -26,7 +27,7 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
@@ -36,6 +37,7 @@ import ForceSection from './components/ForceSection.vue'
 import RegionsSection from './components/RegionsSection.vue'
 import SectorsSection from './components/SectorsSection.vue'
 import ContactSection from './components/ContactSection.vue'
+import FloatingCTA from './components/FloatingCTA.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -44,6 +46,13 @@ let lenis = null
 const colors = {
   blue: '#0C2340',
   gold: '#968243',
+}
+
+const currentInterest = ref(null)
+
+function setInterest(interest) {
+  currentInterest.value = interest
+  scrollTo('contact')
 }
 
 function scrollTo(id) {
@@ -97,7 +106,7 @@ onUnmounted(() => {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 body {
   font-family: 'Outfit', sans-serif;

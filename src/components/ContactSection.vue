@@ -146,7 +146,7 @@
                 href="https://thetenderto.com/"
                 target="_blank"
               >
-                Découvrir sans remplir le formulaire
+                Aller sur le site
               </a>
             </div>
 

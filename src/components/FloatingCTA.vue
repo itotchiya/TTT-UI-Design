@@ -10,7 +10,7 @@
         class="group relative cursor-pointer overflow-hidden py-4 md:py-5 text-center"
       >
         <span class="text-sm md:text-lg font-bold uppercase tracking-widest text-white drop-shadow-sm transition-transform group-hover:scale-105">
-          Demande de Renseignement
+          {{ $t('ui.cta') }}
         </span>
       </div>
     </div>

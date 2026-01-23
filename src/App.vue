@@ -1,5 +1,6 @@
 <template>
   <div class="min-h-screen" :style="{ backgroundColor: colors.blue }">
+    <LanguageSwitcher />
     <!-- Sections -->
     <HeroSection @scroll-to="scrollTo" />
     <ForceSection />
@@ -14,11 +15,11 @@
         <div class="flex flex-col items-center justify-between gap-6 text-sm text-white/50 sm:flex-row">
           <div class="flex items-center gap-4">
             <img src="/assets/logo.png" alt="The Tender To" class="h-8 brightness-0 invert opacity-80" />
-            <span>© {{ new Date().getFullYear() }} The Tender To</span>
+            <span>{{ $t('ui.copyright', { year: new Date().getFullYear() }) }}</span>
           </div>
           <div class="flex gap-8">
-            <button class="hover:text-white transition-colors" @click="scrollTo('presentation')">Présentation</button>
-            <button class="hover:text-white transition-colors" @click="scrollTo('contact')">Contact</button>
+            <button class="hover:text-white transition-colors" @click="scrollTo('presentation')">{{ $t('ui.presentation') }}</button>
+            <button class="hover:text-white transition-colors" @click="scrollTo('contact')">{{ $t('ui.contact') }}</button>
           </div>
         </div>
       </div>
@@ -38,6 +39,7 @@ import RegionsSection from './components/RegionsSection.vue'
 import SectorsSection from './components/SectorsSection.vue'
 import ContactSection from './components/ContactSection.vue'
 import FloatingCTA from './components/FloatingCTA.vue'
+import LanguageSwitcher from './components/LanguageSwitcher.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 

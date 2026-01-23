@@ -8,25 +8,25 @@
         </div>
 
         <h2 class="text-2xl md:text-4xl font-bold text-white leading-tight tracking-wider uppercase mb-10">
-          Vous portez un intérêt
+          {{ $t('sectors.title') }}
         </h2>
 
         <div class="space-y-6 text-white/80 font-light leading-relaxed max-w-2xl text-lg">
-          <p>Immobilier, Yachting ou Aviation privée ?</p>
-          <p>Veuillez renseigner vos informations <br />et sélectionner le secteur qui vous intéresse.</p>
+          <p>{{ $t('sectors.question') }}</p>
+          <p>{{ $t('sectors.instruction') }}</p>
         </div>
       </div>
 
       <div class="grid gap-8 md:grid-cols-3">
         <div 
           v-for="sector in sectors" 
-          :key="sector.name" 
+          :key="sector.id" 
           class="relative group h-64 overflow-hidden shadow-xl cursor-pointer"
-          @click="$emit('select-interest', sector.name)"
+          @click="$emit('select-interest', sector.id)"
         >
           <img 
             :src="sector.image" 
-            :alt="sector.name" 
+            :alt="$t(`sectors.items.${sector.id}`)" 
             class="sector-image absolute inset-0 h-[120%] w-full object-cover transition-opacity duration-700" 
           />
           <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
@@ -38,7 +38,7 @@
               <div class="absolute -top-1 -right-1 h-4 w-4 border-t border-r border-white/80" />
               
               <span class="text-lg md:text-xl font-light text-white tracking-[0.2em] uppercase text-center drop-shadow-md">
-                {{ sector.name }}
+                {{ $t(`sectors.items.${sector.id}`) }}
               </span>
             </div>
           </div>
@@ -46,7 +46,7 @@
       </div>
 
       <div class="mt-16 text-center">
-        <p class="text-white/80 font-medium text-lg mb-8 italic">Merci de compléter le formulaire ci-dessous</p>
+        <p class="text-white/80 font-medium text-lg mb-8 italic">{{ $t('sectors.footer') }}</p>
         <div class="w-16 h-px bg-white/30 mx-auto"></div>
       </div>
     </div>
@@ -61,9 +61,9 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
 const sectors = [
-  { name: 'IMMOBILIER', image: '/assets/Real-estate.jpg' },
-  { name: 'YACHTING', image: '/assets/Yachting.jpg' },
-  { name: 'AVIATION', image: '/assets/flights-bg.png' },
+  { id: 'immobilier', image: '/assets/Real-estate.jpg' },
+  { id: 'yachting', image: '/assets/Yachting.jpg' },
+  { id: 'aviation', image: '/assets/flights-bg.png' },
 ]
 
 onMounted(() => {

@@ -9,27 +9,27 @@
 
         <div class="mb-16">
           <h2 class="text-2xl md:text-4xl font-bold text-white leading-tight tracking-wider uppercase">
-            La Force <br />
-            <span class="text-2xl md:text-3xl font-light opacity-80 uppercase tracking-wider">de The Tender To</span>
+            {{ $t('force.title') }} <br />
+            <span class="text-2xl md:text-3xl font-light opacity-80 uppercase tracking-wider">{{ $t('force.subtitle') }}</span>
           </h2>
         </div>
 
         <div class="space-y-12">
           <div class="relative">
             <p class="text-white/80 font-light leading-relaxed max-w-2xl text-lg">
-              <span class="font-bold text-white">Les GoldTender</span> sont des apporteurs d’affaires qualifiés, évoluant dans des environnements haut de gamme et de services premium. <br />
-              Ils mettent en relation clients et opportunités grâce à leur réseau et à leur connaissance des attentes d’une clientèle exigeante.
+              <span class="font-bold text-white">{{ $t('force.goldTender') }}</span> {{ $t('force.goldTenderDesc') }} <br />
+              {{ $t('force.goldTenderDesc2') }}
             </p>
           </div>
 
           <div class="relative">
             <p class="text-white/80 font-light leading-relaxed max-w-2xl text-lg">
-              <span class="font-bold text-white">Les InterTender</span> sont des structures professionnelles reconnues — agences, courtiers, acteurs spécialisés — qui collaborent avec The Tender To au sein de l’écosystème.
+              <span class="font-bold text-white">{{ $t('force.interTender') }}</span> {{ $t('force.interTenderDesc') }}
             </p>
           </div>
 
           <p class="text-lg text-white font-light pt-8 border-t border-white/10 max-w-2xl leading-relaxed">
-            The Tender To coordonne l’ensemble des mises en relation afin d’assurer un fonctionnement fluide, confidentiel et cohérent.
+            {{ $t('force.coordination') }}
           </p>
         </div>
       </div>

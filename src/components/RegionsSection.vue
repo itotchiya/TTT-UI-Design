@@ -7,22 +7,22 @@
           <div class="absolute top-0 left-0 w-full bg-white/40 side-line-fill"></div>
         </div>
         
-        <h2 class="text-2xl md:text-4xl font-bold text-white leading-tight tracking-wider uppercase mb-10">Où nous opérons</h2>
+        <h2 class="text-2xl md:text-4xl font-bold text-white leading-tight tracking-wider uppercase mb-10">{{ $t('regions.title') }}</h2>
         <p class="mt-6 text-lg text-white/70 font-light max-w-2xl">
-          Grâce à son réseau, The Tender To est implanté dans des univers <span class="font-bold text-white">iconiques</span>, luxueux et hautement spécialisés.
+          {{ $t('regions.description') }}
         </p>
       </div>
 
       <div class="grid gap-8 md:grid-cols-2">
         <div 
           v-for="(city, index) in cities" 
-          :key="city.name" 
+          :key="city.id" 
           class="relative group h-64 md:h-80 overflow-hidden"
           :class="{ 'md:col-span-2': index === cities.length - 1 }"
         >
           <img 
             :src="city.image" 
-            :alt="city.name" 
+            :alt="$t(`regions.cities.${city.id}`)" 
             class="city-image absolute inset-0 h-[120%] w-full object-cover transition-opacity duration-700" 
           />
           <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
@@ -34,7 +34,7 @@
               <div class="absolute -top-1 -right-1 h-6 w-6 border-t-2 border-r-2 border-white/60" />
               
               <span class="text-3xl md:text-5xl font-serif font-light text-white tracking-[0.1em] uppercase">
-                {{ city.name }}
+                {{ $t(`regions.cities.${city.id}`) }}
               </span>
             </div>
           </div>
@@ -50,11 +50,11 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
 const cities = [
-  { name: 'MEGEVE', image: '/assets/MEGEVE.jpg' },
-  { name: 'ST TROPEZ', image: '/assets/ST-TROPEZ.webp' },
-  { name: 'DEAUVILLE', image: '/assets/deauville.jpg' },
-  { name: 'PARIS', image: '/assets/paris.jpg' },
-  { name: 'MARRAKECH', image: '/assets/Marrakesh.jpg' },
+  { id: 'megeve', image: '/assets/MEGEVE.jpg' },
+  { id: 'stTropez', image: '/assets/ST-TROPEZ.webp' },
+  { id: 'deauville', image: '/assets/deauville.jpg' },
+  { id: 'paris', image: '/assets/paris.jpg' },
+  { id: 'marrakech', image: '/assets/Marrakesh.jpg' },
 ]
 
 onMounted(() => {

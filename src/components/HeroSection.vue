@@ -19,18 +19,18 @@
         <div class="absolute -top-2 -right-2 h-12 w-12 border-t-2 border-r-2 border-white/40" />
 
         <h1 class="text-xl sm:text-2xl md:text-5xl font-light text-white leading-tight mb-8 uppercase tracking-widest whitespace-nowrap">
-          Bienvenue à bord,
+          {{ $t('hero.welcome') }}
         </h1>
         
         <div class="space-y-8 text-left mx-auto">
           <p class="text-lg md:text-xl text-white/90 font-light leading-relaxed">
-            The Tender To est une plateforme innovante réunissant trois secteurs phares :<br />
-            l’Immobilier, le Yachting et l’Aviation privée.
+            {{ $t('hero.p1') }}<br />
+            {{ $t('hero.p2') }}
           </p>
 
           <p class="text-base md:text-lg text-white/80 font-light leading-relaxed">
-            Nous avons conçu un écosystème d’apporteurs d’affaires et de partenaires professionnels afin de connecter clients, biens et opportunités d’exception.<br />
-            The Tender To privilégie le réseau, la mise en relation qualifiée et une approche discrète, propre aux univers du luxe.
+            {{ $t('hero.p3') }}<br />
+            {{ $t('hero.p4') }}
           </p>
         </div>
 

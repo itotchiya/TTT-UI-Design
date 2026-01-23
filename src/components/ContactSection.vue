@@ -5,7 +5,7 @@
         <!-- Right: Form -->
         <div class="bg-white p-8 shadow-2xl md:p-12 mx-auto w-full max-w-3xl">
           <div class="text-center mb-10">
-            <h2 class="text-2xl md:text-4xl font-bold tracking-tight text-[#0C2340] uppercase">Demande de Renseignement</h2>
+            <h2 class="text-2xl md:text-4xl font-bold tracking-tight text-[#0C2340] uppercase">{{ $t('contact.title') }}</h2>
             <div class="mt-6 w-12 h-1 bg-[#968243] mx-auto opacity-30"></div>
           </div>
 
@@ -13,35 +13,35 @@
             <!-- Contact Info -->
             <div class="grid gap-4 sm:grid-cols-2">
               <div>
-                <label class="mb-1.5 block text-sm font-medium text-slate-700">Prénom</label>
+                <label class="mb-1.5 block text-sm font-medium text-slate-700">{{ $t('contact.form.firstName') }}</label>
                 <input
                   v-model.trim="form.firstName"
                   class="w-full border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-100"
-                  placeholder="Jean"
+                  :placeholder="$t('contact.form.firstNamePlaceholder')"
                 />
               </div>
               <div>
-                <label class="mb-1.5 block text-sm font-medium text-slate-700">Nom</label>
+                <label class="mb-1.5 block text-sm font-medium text-slate-700">{{ $t('contact.form.lastName') }}</label>
                 <input
                   v-model.trim="form.lastName"
                   class="w-full border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-100"
-                  placeholder="Dupont"
+                  :placeholder="$t('contact.form.lastNamePlaceholder')"
                 />
               </div>
             </div>
 
             <div>
-              <label class="mb-1.5 block text-sm font-medium text-slate-700">Email</label>
+              <label class="mb-1.5 block text-sm font-medium text-slate-700">{{ $t('contact.form.email') }}</label>
               <input
                 v-model.trim="form.email"
                 type="email"
                 class="w-full border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-100"
-                placeholder="jean@exemple.com"
+                :placeholder="$t('contact.form.emailPlaceholder')"
               />
             </div>
 
             <div>
-              <label class="mb-1.5 block text-sm font-medium text-slate-700">Téléphone</label>
+              <label class="mb-1.5 block text-sm font-medium text-slate-700">{{ $t('contact.form.phone') }}</label>
               <div class="flex items-center rounded-lg shadow-sm">
                 <div class="relative">
                   <button 
@@ -90,7 +90,7 @@
                     type="tel" 
                     id="phone-input" 
                     class="block w-full z-20 bg-slate-50 border border-slate-200 border-l-0 text-slate-900 text-sm rounded-e-lg focus:ring-[#0C2340] focus:border-[#0C2340] px-4 py-3 outline-none transition-colors" 
-                    placeholder="123 456 789" 
+                    :placeholder="$t('contact.form.phonePlaceholder')" 
                     required 
                   />
                 </div>
@@ -99,7 +99,7 @@
 
             <!-- Interest Selection (Condensed) -->
             <div class="pt-2">
-              <label class="mb-4 block text-sm font-semibold uppercase tracking-wider text-slate-400">Centres d'intérêt</label>
+              <label class="mb-4 block text-sm font-semibold uppercase tracking-wider text-slate-400">{{ $t('contact.form.interests') }}</label>
               <div class="grid gap-4 sm:grid-cols-3">
                 <!-- Real Estate -->
                 <label 
@@ -107,7 +107,7 @@
                   :class="form.realEstate ? 'border-[#968243] bg-[#968243]/5' : 'border-slate-100'"
                 >
                   <input v-model="form.realEstate" type="checkbox" class="h-5 w-5 rounded-none accent-[#968243]" />
-                  <span class="font-medium text-slate-800">Immobilier</span>
+                  <span class="font-medium text-slate-800">{{ $t('contact.form.realEstate') }}</span>
                 </label>
 
                 <!-- Yachting -->
@@ -116,7 +116,7 @@
                   :class="form.yachting ? 'border-[#968243] bg-[#968243]/5' : 'border-slate-100'"
                 >
                   <input v-model="form.yachting" type="checkbox" class="h-5 w-5 rounded-none accent-[#968243]" />
-                  <span class="font-medium text-slate-800">Yachting</span>
+                  <span class="font-medium text-slate-800">{{ $t('contact.form.yachting') }}</span>
                 </label>
 
                 <!-- Aviation -->
@@ -125,7 +125,7 @@
                   :class="form.aviation ? 'border-[#968243] bg-[#968243]/5' : 'border-slate-100'"
                 >
                   <input v-model="form.aviation" type="checkbox" class="h-5 w-5 rounded-none accent-[#968243]" />
-                  <span class="font-medium text-slate-800">Aviation</span>
+                  <span class="font-medium text-slate-800">{{ $t('contact.form.aviation') }}</span>
                 </label>
               </div>
             </div>
@@ -138,7 +138,7 @@
                 :style="{ backgroundColor: colors.gold }"
                 :disabled="submitting"
               >
-                {{ submitting ? 'Envoi...' : 'Envoyer la demande' }}
+                {{ submitting ? $t('contact.form.submitting') : $t('contact.form.submit') }}
               </button>
 
               <a
@@ -146,7 +146,7 @@
                 href="https://thetenderto.com/"
                 target="_blank"
               >
-                Aller sur le site
+                {{ $t('contact.form.discover') }}
               </a>
             </div>
 
@@ -167,15 +167,15 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 class="mt-4 text-xl font-bold text-slate-900">Vérifiez vos emails</h3>
+          <h3 class="mt-4 text-xl font-bold text-slate-900">{{ $t('contact.modal.title') }}</h3>
           <p class="mt-2 text-slate-600">
-            Nous avons envoyé un lien de vérification à <strong>{{ form.email }}</strong>
+            {{ $t('contact.modal.description') }} <strong>{{ form.email }}</strong>
           </p>
         </div>
 
         <div class="mt-6 rounded-2xl bg-slate-50 p-4">
           <div class="flex items-center justify-between">
-            <span class="text-sm font-medium text-slate-700">Redirection dans</span>
+            <span class="text-sm font-medium text-slate-700">{{ $t('contact.modal.redirect') }}</span>
             <span class="rounded-full px-3 py-1 text-sm font-bold text-white" :style="{ backgroundColor: colors.blue }">
               {{ countdown }}s
             </span>
@@ -198,13 +198,13 @@
             href="https://thetenderto.com/"
             target="_blank"
           >
-            Ouvrir maintenant
+            {{ $t('contact.modal.openNow') }}
           </a>
           <button
             class="flex-1 rounded-xl border border-slate-200 bg-white py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
             @click="closeModal"
           >
-            Fermer
+            {{ $t('contact.modal.close') }}
           </button>
         </div>
       </div>
@@ -214,6 +214,9 @@
 
 <script setup>
 import { reactive, ref, computed, onUnmounted, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const props = defineProps({
   selectedInterest: {
@@ -262,9 +265,9 @@ const form = reactive({
 // Watch for prop changes to auto-select interest
 watch(() => props.selectedInterest, (newVal) => {
   if (newVal) {
-    if (newVal === 'IMMOBILIER') form.realEstate = true
-    if (newVal === 'YACHTING') form.yachting = true
-    if (newVal === 'AVIATION') form.aviation = true
+    if (newVal === 'immobilier') form.realEstate = true
+    if (newVal === 'yachting') form.yachting = true
+    if (newVal === 'aviation') form.aviation = true
   }
 })
 
@@ -293,12 +296,12 @@ async function handleSubmit() {
   error.value = ''
 
   if (!form.realEstate && !form.yachting && !form.aviation) {
-    error.value = 'Veuillez sélectionner au moins un centre d\'intérêt.'
+    error.value = t('contact.error.interest')
     return
   }
 
   if (!form.firstName || !form.lastName || !form.email || !form.phone) {
-    error.value = 'Veuillez remplir tous les champs.'
+    error.value = t('contact.error.fields')
     return
   }
 
@@ -321,7 +324,7 @@ async function handleSubmit() {
       }
     }, 1000)
   } catch {
-    error.value = 'Une erreur est survenue. Veuillez réessayer.'
+    error.value = t('contact.error.general')
   } finally {
     submitting.value = false
   }

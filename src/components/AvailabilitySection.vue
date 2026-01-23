@@ -2,7 +2,7 @@
   <section id="availability" class="scroll-mt-20 bg-white py-16 md:py-24">
     <div class="mx-auto max-w-6xl px-4">
       <div class="text-center">
-        <h2 class="text-3xl font-bold tracking-tight md:text-4xl">Vous êtes intéressé par ?</h2>
+        <h2 class="text-3xl font-bold tracking-tight md:text-4xl">{{ $t('availability.title') }}</h2>
       </div>
 
       <!-- Feature Cards as Tabs -->
@@ -15,17 +15,17 @@
           :style="activeTab === feature.id ? { ringColor: colors.gold } : {}"
           @click="activeTab = feature.id"
         >
-          <img :src="feature.image" :alt="feature.title" class="h-40 w-full object-cover" />
+          <img :src="feature.image" :alt="$t(`availability.sectors.${feature.id}`)" class="h-40 w-full object-cover" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
           <div class="absolute bottom-4 left-4 right-4">
-            <div class="text-lg font-semibold text-white">{{ feature.title }}</div>
+            <div class="text-lg font-semibold text-white">{{ $t(`availability.sectors.${feature.id}`) }}</div>
           </div>
           <div
             v-if="activeTab === feature.id"
             class="absolute top-3 right-3 rounded-full px-2 py-1 text-xs font-bold"
             :style="{ backgroundColor: colors.gold, color: 'white' }"
           >
-            Sélectionné
+            {{ $t('availability.selected') }}
           </div>
         </button>
       </div>
@@ -35,13 +35,13 @@
         <div class="rounded-3xl border bg-white p-6 shadow-sm">
           <div class="mb-4 flex items-center justify-between">
             <h3 class="text-lg font-semibold text-slate-800">
-              {{ activeTab === 'real-estate' ? 'Propriétés' : 'Destinations Charter' }}
+              {{ activeTab === 'realEstate' ? $t('availability.properties') : $t('availability.destinationsCharter') }}
             </h3>
             <span
               class="rounded-full px-3 py-1 text-xs font-semibold text-white"
               :style="{ backgroundColor: colors.blue }"
             >
-              {{ currentCities.length }} destinations
+              {{ $t('availability.destinationsCount', { count: currentCities.length }) }}
             </span>
           </div>
 
@@ -49,14 +49,14 @@
             <ul :key="activeTab" class="divide-y divide-slate-100">
               <li
                 v-for="city in currentCities"
-                :key="city.name"
+                :key="city.id"
                 class="flex items-center justify-between py-4 first:pt-0 last:pb-0"
               >
                 <div class="flex items-center gap-4">
-                  <img :src="city.flag" :alt="city.country" class="h-6 w-8 rounded object-cover shadow-sm" />
+                  <img :src="city.flag" :alt="$t(`availability.countries.${city.countryId}`)" class="h-6 w-8 rounded object-cover shadow-sm" />
                   <div>
-                    <div class="font-semibold text-slate-900">{{ city.name }}</div>
-                    <div class="text-sm text-slate-500">{{ city.country }}</div>
+                    <div class="font-semibold text-slate-900">{{ $t(`availability.cities.${city.id}`) }}</div>
+                    <div class="text-sm text-slate-500">{{ $t(`availability.countries.${city.countryId}`) }}</div>
                   </div>
                 </div>
                 <span
@@ -64,7 +64,7 @@
                   :class="city.available ? '' : 'bg-slate-100 text-slate-500'"
                   :style="city.available ? { backgroundColor: colors.gold + '25', color: colors.gold } : {}"
                 >
-                  {{ city.available ? 'Disponible' : 'Bientôt' }}
+                  {{ city.available ? $t('availability.available') : $t('availability.soon') }}
                 </span>
               </li>
             </ul>
@@ -85,18 +85,16 @@ const colors = {
 
 const features = [
   {
-    id: 'real-estate',
-    title: 'Immobilier',
+    id: 'realEstate',
     image: '/assets/Real-estate.jpg',
   },
   {
     id: 'yachting',
-    title: 'Yachting',
     image: '/assets/Yachting.jpg',
   },
 ]
 
-const activeTab = ref('real-estate')
+const activeTab = ref('realEstate')
 const slideDirection = ref('slide-left')
 
 watch(activeTab, (newVal, oldVal) => {
@@ -106,23 +104,23 @@ watch(activeTab, (newVal, oldVal) => {
 })
 
 const realEstateCities = [
-  { name: 'Paris', country: 'France', flag: '/assets/Flag-France.webp', available: true },
-  { name: 'Megève', country: 'France', flag: '/assets/Flag-France.webp', available: true },
-  { name: 'Deauville', country: 'France', flag: '/assets/Flag-France.webp', available: false },
-  { name: 'Saint-Tropez', country: 'France', flag: '/assets/Flag-France.webp', available: true },
-  { name: 'Marrakech', country: 'Maroc', flag: '/assets/Flag_of_Morocco.svg.png', available: false },
+  { id: 'paris', countryId: 'france', flag: '/assets/Flag-France.webp', available: true },
+  { id: 'megeve', countryId: 'france', flag: '/assets/Flag-France.webp', available: true },
+  { id: 'deauville', countryId: 'france', flag: '/assets/Flag-France.webp', available: false },
+  { id: 'stTropez', countryId: 'france', flag: '/assets/Flag-France.webp', available: true },
+  { id: 'marrakech', countryId: 'maroc', flag: '/assets/Flag_of_Morocco.svg.png', available: false },
 ]
 
 const yachtingCities = [
-  { name: 'Saint-Tropez', country: 'France', flag: '/assets/Flag-France.webp', available: true },
-  { name: 'Cannes', country: 'France', flag: '/assets/Flag-France.webp', available: true },
-  { name: 'Nice', country: 'France', flag: '/assets/Flag-France.webp', available: false },
-  { name: 'Monaco', country: 'Monaco', flag: '/assets/Flag_of_Monaco.svg.webp', available: true },
-  { name: 'Ibiza', country: 'Espagne', flag: '/assets/Bandera_de_España.svg', available: false },
+  { id: 'stTropez', countryId: 'france', flag: '/assets/Flag-France.webp', available: true },
+  { id: 'cannes', countryId: 'france', flag: '/assets/Flag-France.webp', available: true },
+  { id: 'nice', countryId: 'france', flag: '/assets/Flag-France.webp', available: false },
+  { id: 'monaco', countryId: 'monaco', flag: '/assets/Flag_of_Monaco.svg.webp', available: true },
+  { id: 'ibiza', countryId: 'espagne', flag: '/assets/Bandera_de_España.svg', available: false },
 ]
 
 const currentCities = computed(() =>
-  activeTab.value === 'real-estate' ? realEstateCities : yachtingCities
+  activeTab.value === 'realEstate' ? realEstateCities : yachtingCities
 )
 </script>
 

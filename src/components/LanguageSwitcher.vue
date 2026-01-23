@@ -1,15 +1,15 @@
 
 <template>
-  <div class="fixed top-6 right-6 z-[100] flex gap-1 bg-[#0C2340]/20 backdrop-blur-md p-1 rounded-full border border-white/10 shadow-xl">
+  <div class="fixed top-6 right-6 z-[100] flex gap-1 bg-[#0C2340] border border-[#968243]/30 p-1 rounded-full shadow-2xl">
     <button 
-      v-for="lang in ['fr', 'en']" 
+      v-for="lang in ['FR', 'EN']" 
       :key="lang"
-      @click="setLocale(lang)"
-      class="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300"
+      @click="setLocale(lang.toLowerCase())"
+      class="px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300"
       :class="[
-        locale === lang 
-          ? 'bg-[#968243] text-white shadow-md' 
-          : 'text-white/70 hover:text-white hover:bg-white/10'
+        locale === lang.toLowerCase() 
+          ? 'bg-[#968243] text-white shadow-lg' 
+          : 'text-white/50 hover:text-white hover:bg-white/5'
       ]"
     >
       {{ lang }}

@@ -46,7 +46,7 @@ export default {
             lastName: "Last Name",
             lastNamePlaceholder: "Doe",
             email: "Email",
-            emailPlaceholder: "john@example.com",
+            emailPlaceholder: "john{'@'}example.com",
             phone: "Phone",
             phonePlaceholder: "6 12 34 56 78",
             interests: "Interests",
